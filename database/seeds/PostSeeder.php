@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use App\Model\Post;
+use Faker\Generator as Faker;
 class PostSeeder extends Seeder
 {
     /**
@@ -11,6 +12,6 @@ class PostSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(Post::class, 50)->create();
     }
 }

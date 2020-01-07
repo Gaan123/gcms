@@ -19,6 +19,7 @@ Auth::routes();
 
 Route::group(['prefix' => 'g-admin','middleware' => ['auth']], function () {
     Route::get('/', 'HomeController@index')->name('admin');
-//    Route::resource('/g-admin', \App\Http\Controllers\Backend\PostController::class);
-    Route::resource('/post', Backend\PostController::class);
+    Route::group(['prefix' => 'rep','namespace' => 'Backend'], function () {
+        Route::resource('/post', PostController::class);
+    });
 });
