@@ -23,7 +23,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts=$this->post->getAll();
+        $posts=$this->post->getPaginate(20);
         return view('admin.posts.index',compact('posts'));
     }
 
@@ -34,6 +34,7 @@ class PostController extends Controller
      */
     public function create()
     {
+
         return view('admin.posts.new');
     }
 
@@ -45,7 +46,11 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $data=$request->except('_token','files');
+        $data['content']=$data['content']?$data['content']:" ";
+        $this->post->create($data);
+        return redirect()->route('admin');
     }
 
     /**

@@ -14,10 +14,26 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
+                    <div class="card card-secondary">
+                        <div class="card-header">
+                            <h3 class="card-title">Add new post</h3>
+
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
                         </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            {{ Form::bsToggle('status',true,["id"=>"publishStatus"],'Publish Status:') }}
+                            <input type="submit" class="btn btn-block btn-info" value="Publish">
+                        </div>
+                        <!-- /.card-body -->
+
+                        <!-- /.card-footer -->
                     </div>
+
                 </div>
             </div>
 
@@ -29,35 +45,23 @@
 @push('script')
     <script type="text/javascript">
         $(document).ready(function () {
-            $.validator.setDefaults({
-                submitHandler: function () {
-                    alert( "Form successful submitted!" );
-                }
-            });
-            $('#quickForm').validate({
+
+            $('#addPost').validate({
                 rules: {
-                    email: {
+                    title: {
                         required: true,
-                        email: true,
                     },
-                    password: {
-                        required: true,
-                        minlength: 5
-                    },
-                    terms: {
+                    content: {
                         required: true
-                    },
+                    }
                 },
                 messages: {
-                    email: {
-                        required: "Please enter a email address",
-                        email: "Please enter a vaild email address"
+                    title: {
+                        required: "Please enter a title"
                     },
-                    password: {
-                        required: "Please provide a password",
-                        minlength: "Your password must be at least 5 characters long"
-                    },
-                    terms: "Please accept our terms"
+                    content: {
+                        required: "Please provide a password"
+                    }
                 },
                 errorElement: 'span',
                 errorPlacement: function (error, element) {

@@ -10,6 +10,13 @@ interface BaseRepositoriesInterface
      * @return mixed
      */
     public function getAll();
+
+    /**
+     * Get paginated data
+     * @param $limit
+     * @return mixed
+     */
+    public function getPaginate($limit);
     /**
      * Get one
      * @param $id

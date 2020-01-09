@@ -31,6 +31,7 @@ abstract class BaseRepository implements BaseRepositoriesInterface
             $this->getModel()
         );
     }
+
     /**
      * Get all.
      *
@@ -40,6 +41,8 @@ abstract class BaseRepository implements BaseRepositoriesInterface
     {
         return $this->_model->all();
     }
+
+
     /**
      * Get one
      * @param $id
@@ -47,8 +50,7 @@ abstract class BaseRepository implements BaseRepositoriesInterface
      */
     public function find($id)
     {
-        $result = $this->_model->find($id);
-        return $result;
+        return $this->_model->find($id);
     }
     /**
      * Create
@@ -89,7 +91,15 @@ abstract class BaseRepository implements BaseRepositoriesInterface
         }
         return false;
     }
-
+    /**
+     * Get the paginated data
+     * @param $limit
+     * @return mixed
+     */
+    public function getPaginate($limit)
+    {
+        return $this->_model->paginate($limit);
+    }
     /**
      * Make a new instance of the entity to query on.
      *

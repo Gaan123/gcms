@@ -9,6 +9,7 @@ class Post extends Model
 {
     use Sluggable;
 
+    public $guarded=[];
     /**
      * Return the slugable configuration array for this model.
      *
