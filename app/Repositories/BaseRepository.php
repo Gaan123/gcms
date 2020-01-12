@@ -80,14 +80,14 @@ abstract class BaseRepository implements BaseRepositoriesInterface
      * Delete
      *
      * @param $id
-     * @return bool
+     * @return mixed
      */
     public function delete($id)
     {
         $result = $this->find($id);
         if($result) {
             $result->delete();
-            return true;
+            return $result;
         }
         return false;
     }
@@ -98,7 +98,14 @@ abstract class BaseRepository implements BaseRepositoriesInterface
      */
     public function getPaginate($limit)
     {
-        return $this->_model->paginate($limit);
+        $model=$this->_model->query();
+
+        if (isset(request()->order)){
+            $model->orderBy('title',request('order'));
+        }
+        $model->latest();
+//        dd($model->paginate(20));
+        return $model->paginate($limit);
     }
     /**
      * Make a new instance of the entity to query on.

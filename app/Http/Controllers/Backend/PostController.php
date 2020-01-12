@@ -23,6 +23,7 @@ class PostController extends Controller
      */
     public function index()
     {
+//        dd(request()->all());
         $posts=$this->post->getPaginate(20);
         return view('admin.posts.index',compact('posts'));
     }
@@ -46,11 +47,10 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-
         $data=$request->except('_token','files');
         $data['content']=$data['content']?$data['content']:" ";
         $this->post->create($data);
-        return redirect()->route('admin');
+        return redirect()->route('post.index')->with('success','Post has been added successjjfully');
     }
 
     /**
@@ -95,6 +95,10 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post=$this->post->delete($id);
+        if ($post){
+            return redirect()->back()->with('success',$post->title.'has been deleted successfully');
+        }
+        redirect()->with('errors','Something went wrong');
     }
 }

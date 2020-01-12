@@ -16,8 +16,9 @@
     <link rel="stylesheet" href="{{asset('/admin')}}/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="{{asset('/admin')}}/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-    <!-- JQVMap -->
-    <link rel="stylesheet" href="{{asset('/admin')}}/plugins/jqvmap/jqvmap.min.css">
+
+    <!-- Toastr -->
+    <link rel="stylesheet" href="{{asset('/admin')}}/plugins/toastr/toastr.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('/admin')}}/dist/css/adminlte.min.css">
     <!-- overlayScrollbars -->
@@ -192,6 +193,14 @@
     <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+@if (session('success'))
+    <div id="toast-container" class="toast-top-right">
+        <div class="toast toast-success" aria-live="polite" style="">
+            <div class="toast-message">{{ session('success') }}
+            </div>
+        </div>
+    </div>
+@endif
 
 <!-- jQuery -->
 <script src="{{asset('/admin')}}/plugins/jquery/jquery.min.js"></script>
@@ -203,15 +212,7 @@
 </script>
 <!-- Bootstrap 4 -->
 <script src="{{asset('/admin')}}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- ChartJS -->
-<script src="{{asset('/admin')}}/plugins/chart.js/Chart.min.js"></script>
-<!-- Sparkline -->
-<script src="{{asset('/admin')}}/plugins/sparklines/sparkline.js"></script>
-<!-- JQVMap -->
-<script src="{{asset('/admin')}}/plugins/jqvmap/jquery.vmap.min.js"></script>
-<script src="{{asset('/admin')}}/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
-<!-- jQuery Knob Chart -->
-<script src="{{asset('/admin')}}/plugins/jquery-knob/jquery.knob.min.js"></script>
+
 <!-- daterangepicker -->
 <script src="{{asset('/admin')}}/plugins/moment/moment.min.js"></script>
 <script src="{{asset('/admin')}}/plugins/daterangepicker/daterangepicker.js"></script>
@@ -224,21 +225,16 @@
 <!-- jquery-validation -->
 <script src="{{asset('/admin')}}/plugins/jquery-validation/jquery.validate.min.js"></script>
 <script src="{{asset('/admin')}}/plugins/jquery-validation/additional-methods.min.js"></script>
+<!-- Toastr -->
+<script src="{{asset('/admin')}}/plugins/toastr/toastr.min.js"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('/admin')}}/dist/js/adminlte.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('/admin')}}/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('/admin')}}/dist/js/demo.js"></script>
-<script>
-    $(function () {
-        // Summernote
-        $('.wysiwyg').summernote({
-            tabsize: 2,
-            height: 350
-        });
-    })
-</script>
+<script src="{{asset('/admin')}}/custom.js"></script>
+
 @stack('script')
 </body>
 </html>
