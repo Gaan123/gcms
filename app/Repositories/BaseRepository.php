@@ -50,7 +50,7 @@ abstract class BaseRepository implements BaseRepositoriesInterface
      */
     public function find($id)
     {
-        return $this->_model->find($id);
+        return $this->_model->findOrFail($id);
     }
     /**
      * Create

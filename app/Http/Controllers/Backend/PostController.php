@@ -23,7 +23,6 @@ class PostController extends Controller
      */
     public function index()
     {
-//        dd(request()->all());
         $posts=$this->post->getPaginate(20);
         return view('admin.posts.index',compact('posts'));
     }
@@ -42,22 +41,22 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return Response
      */
     public function store(Request $request)
     {
         $data=$request->except('_token','files');
-        $data['content']=$data['content']?$data['content']:" ";
+        $data['status']=isset($request->status)?1:0;
         $this->post->create($data);
-        return redirect()->route('post.index')->with('success','Post has been added successjjfully');
+        return redirect()->route('post.index')->with('success','Post has been added successfully');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return Response
+     * @param int $id
+     * @return void
      */
     public function show($id)
     {
@@ -72,19 +71,23 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post=$this->post->find($id);
+        return view('admin.posts.edit',compact('post'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param  int  $id
      * @return Response
      */
     public function update(Request $request, $id)
     {
-        //
+        $data=$request->except('_token','files');
+        $data['status']=isset($request->status)?1:0;
+        $post=$this->post->update($id,$data);
+        return redirect()->route('post.index')->with('success',$post->title.'Post has been updated successfully');
     }
 
     /**
