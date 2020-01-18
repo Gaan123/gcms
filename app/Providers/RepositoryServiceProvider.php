@@ -24,7 +24,7 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $path=explode('/',request()->path());
+       /* $path=explode('/',request()->path());
         if(isset($path[1])&&$path[1]=='rep'){
             $repo=ucfirst($path[2]);
             $repoRaw="App\Repositories\ $repo \ $repo";
@@ -35,7 +35,7 @@ class RepositoryServiceProvider extends ServiceProvider
            $this->app->singleton(
                $repoInterface, $repository
             );
-        }
-
+        }*/
+        $this->app->singleton('App\Repositories\Post\PostRepositoryInterface','App\Repositories\Post\PostRepository');
     }
 }

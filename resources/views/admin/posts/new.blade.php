@@ -14,26 +14,21 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card card-secondary">
-                        <div class="card-header">
-                            <h3 class="card-title">Add new post</h3>
+                    @component('admin.components.bsComponents.card-collapse')
+                        @slot('title')
+                            Add new post
+                        @endslot
 
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            {{ Form::bsToggle('status',true,["id"=>"publishStatus"],'Publish Status:') }}
-                            <input type="submit" class="btn btn-block btn-info" value="Publish">
-                        </div>
-                        <!-- /.card-body -->
+                        @include('admin.components.global.status',['status'=>true,'button'=>'Publish'])
+                    @endcomponent
 
-                        <!-- /.card-footer -->
-                    </div>
+                    @component('admin.components.bsComponents.card-collapse')
+                        @slot('title')
+                            Media
+                        @endslot
 
+                        @include('admin.components.global.status',['status'=>true,'button'=>'Publish'])
+                    @endcomponent
                 </div>
             </div>
 
