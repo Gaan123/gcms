@@ -17,10 +17,13 @@
     <!-- iCheck -->
     <link rel="stylesheet" href="{{asset('/admin')}}/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
 
+    <!-- dropzone -->
+    <link rel="stylesheet" href="{{asset('/admin/plugins/dropzone-5.5.0/dist/min/dropzone.min.css')}}">
     <!-- Toastr -->
     <link rel="stylesheet" href="{{asset('/admin')}}/plugins/toastr/toastr.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('/admin')}}/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="{{asset('/admin')}}/custom.css">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{asset('/admin')}}/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Daterange picker -->
@@ -216,6 +219,8 @@
 <!-- daterangepicker -->
 <script src="{{asset('/admin')}}/plugins/moment/moment.min.js"></script>
 <script src="{{asset('/admin')}}/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- dropzone -->
+<script src="{{asset('/admin/plugins/dropzone-5.5.0/dist/min/dropzone.min.js')}}"></script>
 <!-- Tempusdominus Bootstrap 4 -->
 <script src="{{asset('/admin')}}/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 <!-- Summernote -->

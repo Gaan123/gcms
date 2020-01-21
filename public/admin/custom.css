@@ -1,0 +1,38 @@
+.media-modal .media-modal-body {
+    height: 360px;
+    overflow-y: auto;
+}
+.media-modal .modal-content{
+    border-radius: 0;
+}
+@media (min-width: 1200px){
+    .modal-xl {
+        max-width: 1325px;
+    }
+}
+
+.select-featured_image{
+    text-align: center;
+}
+.select-featured_image a{
+    display: block;
+    background-color: #edeff0;
+    color: #868080;
+    padding: .5em;
+    border: 1px dashed #a2aab2;
+}
+.select-featured_image a:hover{
+    color: #868080;
+}
+.dropzone {
+    background: white;
+    border-radius: 5px;
+    border: 2px dashed rgb(0, 135, 247);
+    border-image: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+.upload-drop{
+    height: 378px;
+    padding-top: 60px;
+}
