@@ -7,6 +7,7 @@ use App\Repositories\Post\PostRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
+use Optix\Media\Models\Media;
 
 class PostController extends Controller
 {
@@ -34,7 +35,6 @@ class PostController extends Controller
      */
     public function create()
     {
-
         return view('admin.posts.new');
     }
 

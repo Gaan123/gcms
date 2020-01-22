@@ -36,6 +36,7 @@
             </div>
 
         {!! Form::close() !!}
+    </div>
         <div class="modal fade" id="modal-xl">
             <div class="modal-dialog modal-xl media-modal">
                 <div class="modal-content">
@@ -54,9 +55,11 @@
                                 <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Media</a>
                             </li>
                         </ul>
-                        <div class="tab-content upload-drop" id="myTabContent"composer require optix/media>
+                        <div class="tab-content upload-drop" id="myTabContent">
                             <div class="tab-pane fade show active" id="upload" role="tabpanel" aria-labelledby="home-tab">
-                                <form action="{{ route('post.create') }}" class="dropzone">
+
+                                <form action="{{ route('media.upload') }}" class="dropzone" id="dropUpload">
+                                    @csrf
                                     <div class="dz-preview dz-file-preview">
                                         <div class="dz-details">
                                             <div class="dz-filename"><span data-dz-name></span></div>
@@ -92,9 +95,10 @@
             </div>
             <!-- /.modal-dialog -->
         </div>
-    </div>
+
 @endsection
 
 @push('script')
     @include('admin.posts.script')
+    @include('admin.script')
 @endpush
