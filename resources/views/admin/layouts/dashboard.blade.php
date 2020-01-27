@@ -19,6 +19,7 @@
 
     <!-- dropzone -->
     <link rel="stylesheet" href="{{asset('/admin/plugins/dropzone-5.5.0/dist/min/dropzone.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/admin/plugins/bootstrap-image-checkbox-master/dist/css/bootstrap-image-checkbox.css')}}">
     <!-- Toastr -->
     <link rel="stylesheet" href="{{asset('/admin')}}/plugins/toastr/toastr.min.css">
     <!-- Theme style -->
@@ -174,6 +175,7 @@
                 <!-- Main row -->
                 <div class="row">
                     @yield('content')
+                    @includeWhen($mediaModal,'admin.components.global.media.modal')
                 </div>
                 <!-- /.row (main row) -->
             </div><!-- /.container-fluid -->

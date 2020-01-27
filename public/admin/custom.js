@@ -19,6 +19,7 @@ $('.delete-item').click(function (e){
     const deleteRoute=$(this).data('route');
     $('#deleteForm').attr('action',deleteRoute);
 });
+
 $("#customCheckboxSelectAll").click( function(){
     if( $(this).is(':checked') ){
         $('.custom-control-input').prop('checked',true);
@@ -29,7 +30,9 @@ $("#customCheckboxSelectAll").click( function(){
 $('.post_ids').click(e=>{
     $("#customCheckboxSelectAll").prop('checked',false);
 })
-
+/*
+*Dropzone
+ */
 Dropzone.options.dropUpload = {
     paramName: "file", // The name that will be used to transfer the file
     maxFilesize: 2, // MB
@@ -54,3 +57,17 @@ Dropzone.options.dropUpload = {
     }
 };
 
+// Image Set
+$('.set-image').click(e=>{
+    const imageUrl=$('.media-image:checked').data('image');
+    const image=`
+                <img src="${imageUrl}" alt="Featured Image" class="img-fluid">
+                <a href="#" class="featured_image-remove">Remove Image</a>
+                `;
+    $('.featured_image-select').html(image);
+});
+
+$(document).on('click', '.featured_image-remove', function()
+{
+    $('.featured_image-select').html('<a href="#" data-toggle="modal" data-target="#modal-xl">Set Featured Image</a>');
+});

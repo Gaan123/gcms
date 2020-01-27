@@ -36,6 +36,8 @@ class RepositoryServiceProvider extends ServiceProvider
                $repoInterface, $repository
             );
         }*/
+
         $this->app->singleton('App\Repositories\Post\PostRepositoryInterface','App\Repositories\Post\PostRepository');
+        $this->app->singleton('App\Repositories\Media\MediaRepositoryInterface','App\Repositories\Media\MediaRepository');
     }
 }

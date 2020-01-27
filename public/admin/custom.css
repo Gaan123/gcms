@@ -1,5 +1,5 @@
 .media-modal .media-modal-body {
-    height: 360px;
+    height: 330px;
     overflow-y: auto;
 }
 .media-modal .modal-content{
@@ -11,17 +11,17 @@
     }
 }
 
-.select-featured_image{
+.featured_image-select{
     text-align: center;
 }
-.select-featured_image a{
+.featured_image-select a{
     display: block;
     background-color: #edeff0;
     color: #868080;
     padding: .5em;
     border: 1px dashed #a2aab2;
 }
-.select-featured_image a:hover{
+.featured_image-select a:hover{
     color: #868080;
 }
 .dropzone {

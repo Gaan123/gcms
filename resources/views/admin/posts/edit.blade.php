@@ -21,6 +21,7 @@
 
                     @include('admin.components.global.status',['status'=>$post->status,'button'=>'Update'])
                 @endcomponent
+                @include('admin.components.global.media.card')
             </div>
         </div>
 

@@ -21,6 +21,9 @@ Route::group(['prefix' => 'g-admin','middleware' => ['auth']], function () {
     Route::get('/', 'HomeController@index')->name('admin');
     Route::group(['prefix' => 'rep','namespace' => 'Backend'], function () {
         Route::resource('/post', PostController::class);
+        //Media
         Route::post('/media/upload', 'MediaController@uploads')->name('media.upload');
+        Route::get('/medias', 'MediaController@allMedias')->name('media.all');
+        Route::delete('/medias/{media}', 'MediaController@delete')->name('media.delete');
     });
 });
