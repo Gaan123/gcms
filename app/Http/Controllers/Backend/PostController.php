@@ -48,7 +48,8 @@ class PostController extends Controller
     {
         $data=$request->except('_token','files');
         $data['status']=isset($request->status)?1:0;
-        $this->post->create($data);
+        $post=$this->post->create($data);
+        $post->attachMedia($post->id,'featured');
         return redirect()->route('post.index')->with('success','Post has been added successfully');
     }
 

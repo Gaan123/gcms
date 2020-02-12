@@ -16,6 +16,13 @@ return [
     /*
      * The fully qualified class name of the media model.
      */
-    'model' => Optix\Media\Models\Media::class,
+    'model' => \App\Model\Media::class,
+    /**
+     * register sies for conversion
+     */
+    'images'=>[
+        'thumb'=>[150,150],
+        'thumb_250'=>[250,250],
+    ],
 
 ];

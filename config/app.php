@@ -177,6 +177,8 @@ return [
         App\Providers\RepositoryServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\ViewComposerServiceProvider::class,
+        App\Providers\ConversionServiceProvider::class,
+        App\Providers\EloquentServiceProvider::class,
 
     ],
 

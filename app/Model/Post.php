@@ -4,11 +4,11 @@ namespace App\Model;
 
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
+use Optix\Media\HasMedia;
 
 class Post extends Model
 {
-    use Sluggable;
-
+    use Sluggable,HasMedia;
     public $guarded=[];
     /**
      * Return the slugable configuration array for this model.
@@ -23,8 +23,12 @@ class Post extends Model
             ]
         ];
     }
+    public function registerMediaGroups()
+    {
+        $this->addMediaGroup('featured')
+            ->performConversions('thumb');
+    }
     public function setContentAttribute($value){
         $this->attributes['content']=$value?$value:" ";
     }
-
 }

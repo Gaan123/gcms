@@ -48,10 +48,10 @@
                                                    value="{{ $media->id }}"
                                                    class="custom-control-input media-image"
                                                    id="media{{$media->id}}"
-                                                   data-image="{{$media->getUrl()}}"
+                                                   data-image="{{$media->getUrl('thumb_250')}}"
                                                     data-title="{{ $media->name }}">
                                             <label class="custom-control-label" for="media{{$media->id}}">
-                                                <img src="{{$media->getUrl()}}" alt="{{$media->name}}" class="img-fluid">
+                                                <img src="{{$media->getUrl('thumb')}}" alt="{{$media->name}}" class="img-fluid">
                                             </label>
                                         </div>
                                     </div>
@@ -93,8 +93,40 @@
         //image selected
         $('.media-image').change(function (e) {
             let name=$(this).data('title');
-            $('.media-info').html(`<p>${name}</p><a href="{{ route('media.upload') }}">delete image</a>`)
-        })
+            $('.media-info').html(`<p>${name}</p><a class="media-image__delete" href="#">delete image</a>`)
+        });
+        $(document).on('click', '.media-image__delete', function()
+        {
+           if(confirm('Do you wanna delete permanently')){
+               const id =$('.media-image:checked').val();
+               $.ajaxSetup({
+                   headers: {
+                       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                   }
+               });
+               console.log(id);
+               $.ajax(
+                   {
+                       url: `http://127.0.0.1:8000/g-admin/rep/medias/${id}`,
+                       type: 'delete', // replaced from put
+                       dataType: "JSON",
+                       data: {
+                           id
+                       },
+                       success: function (response)
+                       {
+                           $('.media-image:checked').closest('.col-md-2').remove()
+                       },
+                       error: function(e) {
+                           $('.media-image:checked').closest('.col-md-2').remove()
+                           console.log(e); // this line will save you tons of hours while debugging
+                           // do something here because of error
+                       }
+                   });
+           }else{
+               return false;
+             }
+        });
     </script>
 
 @endpush

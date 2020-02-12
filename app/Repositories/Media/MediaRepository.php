@@ -5,7 +5,7 @@ namespace App\Repositories\Media;
 
 
 use App\Repositories\BaseRepository;
-use Optix\Media\Models\Media;
+use App\Model\Media;
 
 class MediaRepository extends BaseRepository implements MediaRepositoryInterface
 {
