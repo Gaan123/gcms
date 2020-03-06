@@ -85,9 +85,15 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data=$request->except('_token','files');
+        $data=$request->except('_token','files','media_id');
         $data['status']=isset($request->status)?1:0;
         $post=$this->post->update($id,$data);
+        if($post->getFirstMedia('featured')){
+            $post->detachMedia($post->getFirstMedia('featured')->id);
+        }
+        if ($request->media_id){
+            $post->attachMedia($request->media_id,'featured');
+        }
         return redirect()->route('post.index')->with('success',$post->title.'Post has been updated successfully');
     }
 

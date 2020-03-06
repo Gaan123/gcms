@@ -41,6 +41,15 @@ abstract class BaseRepository implements BaseRepositoriesInterface
     {
         return $this->_model->all();
     }
+    /**
+     * Get all.
+     *
+     * @return Collection|static[]
+     */
+    public function getAllLatest()
+    {
+        return $this->_model->latest()->get();
+    }
 
 
     /**

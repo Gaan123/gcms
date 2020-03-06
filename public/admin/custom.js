@@ -35,7 +35,7 @@ $('.post_ids').click(e=>{
  */
 Dropzone.options.dropUpload = {
     paramName: "file", // The name that will be used to transfer the file
-    maxFilesize: 2, // MB
+    maxFilesize: 20, // MB
     accept: function(file, done) {
         done();
         // if (file.name == "justinbieber.jpg") {
@@ -47,27 +47,42 @@ Dropzone.options.dropUpload = {
     },
     addRemoveLinks:true,
     autoDiscover:false,
-    init: function() {
-        this.on("complete", function(file) {
-            let self=this;
-           setTimeout(function () {
-               self.removeFile(file);
-           },1500)
-        });
+    // init: function() {
+    //     this.on("complete", function(file,res) {
+    //         let self=this;
+    //         console.log(res)
+    //        setTimeout(function () {
+    //            self.removeFile(file);
+    //        },1500)
+    //     });
+    //     this.on("queuecomplete", function(file) {
+    //         let self=this;
+    //         console.log(file)
+    //     });
+    // },
+    success: function(file, response){
+        let self=this;
+        console.log(response)
+        setTimeout(function () {
+            self.removeFile(file);
+        },1500)
     }
 };
 
 // Image Set
 $('.set-image').click(e=>{
     const imageUrl=$('.media-image:checked').data('image');
+    const id=$('.media-image:checked').val();
     const image=`
                 <img src="${imageUrl}" alt="Featured Image" class="img-fluid">
                 <a href="#" class="featured_image-remove">Remove Image</a>
                 `;
     $('.featured_image-select').html(image);
+    $('#media').val(id);
 });
 
 $(document).on('click', '.featured_image-remove', function()
 {
-    $('.featured_image-select').html('<a href="#" data-toggle="modal" data-target="#modal-xl">Set Featured Image</a>');
+    $('.featured_image-select').html('<a href="#" data-toggle="modal" class="set_featured_image" data-target="#modal-xl">Set Featured Image</a>');
+    $('#media').val(null);
 });

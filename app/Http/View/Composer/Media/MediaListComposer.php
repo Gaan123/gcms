@@ -36,6 +36,6 @@ class MediaListComposer
      */
     public function compose(View $view)
     {
-        $view->with('medias', $this->media->getAll());
+        $view->with('medias', $this->media->getAllLatest());
     }
 }

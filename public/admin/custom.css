@@ -14,7 +14,7 @@
 .featured_image-select{
     text-align: center;
 }
-.featured_image-select a{
+.featured_image-select a.set_featured_image{
     display: block;
     background-color: #edeff0;
     color: #868080;

@@ -41,7 +41,7 @@
                             <div class="col-md-9 media-modal-body">
                                 <div class="row">
                                     @foreach($medias as $media)
-                                    <div class="col-md-2">
+                                    <div class="col-md-2 mb-2">
                                         <div class="custom-control custom-checkbox image-checkbox">
                                             <input type="radio"
                                                    name="media"
@@ -113,12 +113,13 @@
                        data: {
                            id
                        },
-                       success: function (response)
+                       success: function (res)
                        {
-                           $('.media-image:checked').closest('.col-md-2').remove()
+                           if(res.deleted){
+                               $('.media-image:checked').closest('.col-md-2').remove()
+                           }
                        },
                        error: function(e) {
-                           $('.media-image:checked').closest('.col-md-2').remove()
                            console.log(e); // this line will save you tons of hours while debugging
                            // do something here because of error
                        }

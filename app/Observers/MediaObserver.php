@@ -32,7 +32,7 @@ class MediaObserver
      * Handle the media "deleting" event.
      *
      * @param Media $media
-     * @return void
+     * @return bool
      */
     public function deleting(Media $media)
     {
@@ -44,6 +44,7 @@ class MediaObserver
                 unlink($media->find($media->id)->getFullPath($key));
             }
         }
+        return true;
     }
     /**
      * Handle the media "deleted" event.

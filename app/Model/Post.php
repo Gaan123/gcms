@@ -25,8 +25,7 @@ class Post extends Model
     }
     public function registerMediaGroups()
     {
-        $this->addMediaGroup('featured')
-            ->performConversions('thumb');
+        $this->addMediaGroup('featured');
     }
     public function setContentAttribute($value){
         $this->attributes['content']=$value?$value:" ";

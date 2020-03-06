@@ -12,6 +12,11 @@ interface BaseRepositoriesInterface
     public function getAll();
 
     /**
+     * Get all By latest order
+     * @return mixed
+     */
+    public function getAllLatest();
+    /**
      * Get paginated data
      * @param $limit
      * @return mixed
